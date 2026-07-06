@@ -253,9 +253,33 @@ text-shadow:
 }
 
 @media(max-width:768px){
-  .about-text h3{
+  
+  
+ header{
+    top:10px;
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
+    width:95%;
+}
+
+nav{
+    width:100%;
+    padding:10px 12px;
+}
+
+nav ul{
+    justify-content:space-between;
+    gap:0;
+}
+
+nav ul li a{
+    font-size:.95rem;
+}
+
+.about-text h3{
     font-size:2rem;
-  }
+} 
 }
 /* JOURNEY SECTION */
 
