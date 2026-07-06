@@ -279,7 +279,22 @@ nav ul li a{
 
 .about-text h3{
     font-size:2rem;
-} 
+}
+ .hero{
+    background-position:center center;
+}
+
+.hero-content{
+    transform:translateY(-180px);
+}
+
+.hero-content h2{
+    font-size:4rem;
+}
+
+.hero-content p{
+    font-size:1.1rem;
+}
 }
 /* JOURNEY SECTION */
 
