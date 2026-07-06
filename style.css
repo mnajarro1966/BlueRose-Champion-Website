@@ -280,8 +280,13 @@ nav ul li a{
 .about-text h3{
     font-size:2rem;
 }
- .hero{
-    background-position:center center;
+.hero{
+    background-size: contain;
+    background-position: center top;
+}
+.hero{
+    background-size:contain;
+    background-position:center top;
 }
 
 .hero-content{
