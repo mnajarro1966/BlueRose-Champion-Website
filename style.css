@@ -281,11 +281,8 @@ nav ul li a{
     font-size:2rem;
 }
 .hero{
-    background-size: contain;
-    background-position: center top;
-}
-.hero{
-    background-size:contain;
+    min-height:100vh;
+    background-size:cover;
     background-position:center top;
 }
 
