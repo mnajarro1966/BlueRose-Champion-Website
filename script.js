@@ -2,32 +2,77 @@ const videoButton = document.querySelector(".video-button");
 const videoOverlay = document.getElementById("videoOverlay");
 const blueVideo = document.getElementById("blueVideo");
 
-const videoURL =
-"https://pub-cd4aa059c1b14f9bbc08c58e5e37cbb5.r2.dev/intro.mp4";
+const videoParts = Array.from(
+    { length: 38 },
+    (_, index) => `Assets/videos/blue-rose-web/part-${String(index).padStart(3, "0")}.bin`
+);
 
-videoButton.addEventListener("click", () => {
+let videoURL;
 
-    videoOverlay.classList.add("active");
+async function getVideoURL() {
 
-    document.body.style.overflow = "hidden";
+    if (videoURL) return videoURL;
 
-    blueVideo.src = videoURL;
+    const responses = await Promise.all(videoParts.map((part) => fetch(part)));
 
-    blueVideo.load();
+    if (responses.some((response) => !response.ok)) {
+        throw new Error("Unable to load the Blue Rose video.");
+    }
 
-    blueVideo.play();
+    const parts = await Promise.all(responses.map((response) => response.arrayBuffer()));
 
-});
+    videoURL = URL.createObjectURL(new Blob(parts, { type: "video/mp4" }));
 
-blueVideo.addEventListener("ended", () => {
+    return videoURL;
+}
+
+function closeVideo() {
+
+    blueVideo.pause();
+
+    blueVideo.currentTime = 0;
 
     videoOverlay.classList.remove("active");
 
     document.body.style.overflow = "auto";
 
-    blueVideo.pause();
+}
 
-    blueVideo.currentTime = 0;
+videoButton.addEventListener("click", async () => {
+
+    videoOverlay.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+    videoButton.disabled = true;
+
+    try {
+
+        blueVideo.src = await getVideoURL();
+
+        if (!videoOverlay.classList.contains("active")) return;
+
+        blueVideo.load();
+
+        await blueVideo.play().catch(() => {});
+
+    } catch (error) {
+
+        console.error(error);
+
+        closeVideo();
+
+    } finally {
+
+        videoButton.disabled = false;
+
+    }
+
+});
+
+blueVideo.addEventListener("ended", () => {
+
+    closeVideo();
 
 });
 
@@ -35,14 +80,14 @@ videoOverlay.addEventListener("click", (e) => {
 
     if (e.target === videoOverlay) {
 
-        blueVideo.pause();
-
-        blueVideo.currentTime = 0;
-
-        videoOverlay.classList.remove("active");
-
-        document.body.style.overflow = "auto";
+        closeVideo();
 
     }
+
+});
+
+window.addEventListener("beforeunload", () => {
+
+    if (videoURL) URL.revokeObjectURL(videoURL);
 
 });
