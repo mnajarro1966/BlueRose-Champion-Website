@@ -622,15 +622,17 @@ background:#030712;
     opacity:1;
 }
 
-.video-modal iframe{
+.video-modal video{
 
     width:100vw;
 
-    height:100vh;
+    max-height:100vh;
 
     border:none;
 
     background:#000;
+
+    object-fit:contain;
 
 
 }
