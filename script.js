@@ -18,4 +18,3 @@ sponsorButton.addEventListener("click",openSponsorForm);
 sponsorClose.addEventListener("click",closeSponsorForm);
 sponsorModal.addEventListener("click",(e)=>{if(e.target===sponsorModal)closeSponsorForm();});
 document.addEventListener("keydown",(e)=>{if(e.key==="Escape"&&sponsorModal.classList.contains("active"))closeSponsorForm();});
-sponsorForm.addEventListener("submit",(e)=>{e.preventDefault();const data=new FormData(sponsorForm);const subject=encodeURIComponent("Blue Rose Sponsorship Inquiry");const body=encodeURIComponent(`Name: ${data.get("name")}\nBusiness / Organization: ${data.get("business")||"N/A"}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone")||"N/A"}\n\nSponsorship message:\n${data.get("message")}`);window.location.href=`mailto:bluerosenajarro@gmail.com?subject=${subject}&body=${body}`;});
