@@ -1,0 +1,213 @@
+/* ===== BLUE'S JOURNEY — TOURNAMENT ALBUMS ===== */
+.journey-albums{
+  padding:100px 8%;
+  background:linear-gradient(180deg,#030712 0%,#050505 100%);
+}
+
+.journey-albums-header{
+  max-width:900px;
+  margin:0 auto 55px;
+  text-align:center;
+}
+
+.journey-albums-eyebrow{
+  color:#60a5fa;
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+
+.journey-albums h2{
+  font-family:"BlueHero",Arial,sans-serif;
+  font-size:clamp(2.8rem,7vw,5rem);
+  letter-spacing:5px;
+  margin-bottom:16px;
+  text-shadow:0 0 20px rgba(59,130,246,.35);
+}
+
+.journey-albums-intro{
+  color:#9ca3af;
+  line-height:1.8;
+  font-size:1.05rem;
+}
+
+.tournament-album-grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+
+.tournament-album{
+  overflow:hidden;
+  border:1px solid rgba(96,165,250,.25);
+  border-radius:22px;
+  background:linear-gradient(145deg,#08142f,#07101f);
+  box-shadow:0 18px 55px rgba(0,0,0,.35);
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+}
+
+.tournament-album:hover{
+  transform:translateY(-6px);
+  border-color:rgba(96,165,250,.55);
+  box-shadow:0 22px 60px rgba(37,99,235,.16);
+}
+
+.album-cover{
+  min-height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  background:
+    radial-gradient(circle at 30% 20%,rgba(59,130,246,.28),transparent 38%),
+    linear-gradient(135deg,#0b1735,#020617);
+}
+
+.album-cover.has-image{
+  background-size:cover;
+  background-position:center;
+}
+
+.album-cover.has-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(2,6,23,.82));
+}
+
+.album-placeholder{
+  text-align:center;
+  color:#60a5fa;
+}
+
+.album-placeholder i{
+  display:block;
+  font-size:2.6rem;
+  margin-bottom:12px;
+}
+
+.album-placeholder span{
+  color:#94a3b8;
+  font-size:.9rem;
+  letter-spacing:1px;
+}
+
+.album-photo-count{
+  position:absolute;
+  right:14px;
+  bottom:14px;
+  z-index:2;
+  background:rgba(2,6,23,.78);
+  border:1px solid rgba(148,163,184,.24);
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:.82rem;
+  font-weight:700;
+}
+
+.album-info{
+  padding:24px;
+}
+
+.album-date{
+  color:#60a5fa;
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.album-info h3{
+  margin:8px 0 9px;
+  font-size:1.35rem;
+}
+
+.album-result{
+  color:#d1d5db;
+  line-height:1.6;
+}
+
+.album-open{
+  margin-top:20px;
+  width:100%;
+  padding:13px 16px;
+  border:1px solid #3b82f6;
+  border-radius:999px;
+  background:transparent;
+  color:#60a5fa;
+  font-weight:800;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.album-open:hover:not(:disabled){
+  background:#2563eb;
+  color:#fff;
+}
+
+.album-open:disabled{
+  cursor:default;
+  opacity:.55;
+}
+
+.album-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:100000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(0,0,0,.94);
+}
+
+.album-lightbox.active{display:flex;}
+
+.album-lightbox img{
+  max-width:min(1100px,94vw);
+  max-height:88vh;
+  object-fit:contain;
+  border-radius:12px;
+  box-shadow:0 0 45px rgba(59,130,246,.20);
+}
+
+.album-lightbox-close,.album-lightbox-nav{
+  position:absolute;
+  border:0;
+  background:rgba(15,23,42,.72);
+  color:white;
+  cursor:pointer;
+  border-radius:50%;
+}
+
+.album-lightbox-close{
+  top:18px;
+  right:18px;
+  width:48px;
+  height:48px;
+  font-size:2rem;
+}
+
+.album-lightbox-nav{
+  top:50%;
+  transform:translateY(-50%);
+  width:50px;
+  height:50px;
+  font-size:1.35rem;
+}
+
+.album-lightbox-prev{left:18px;}
+.album-lightbox-next{right:18px;}
+
+@media(max-width:768px){
+  .journey-albums{padding:75px 20px;}
+  .journey-albums-header{margin-bottom:38px;}
+  .album-lightbox-nav{width:42px;height:42px;}
+  .album-lightbox-prev{left:8px;}
+  .album-lightbox-next{right:8px;}
+}
