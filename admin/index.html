@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: https://*.supabase.co; connect-src 'self' https://*.supabase.co; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Parents · Blue's Journey</title>
+  <link rel="stylesheet" href="../journey-gallery.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main>
+    <div class="topline"><a href="../#competition-albums">← Blue Rose</a><span>PRIVATE · PARENTS</span></div>
+    <div class="intro"><p class="eyebrow">Every tournament. Every milestone.</p><h1>BLUE'S JOURNEY</h1><p>A place to share Blue's moments on the mats.</p></div>
+    <p id="status" role="status" aria-live="polite">Opening your panel…</p>
+    <section id="login" class="panel" hidden>
+      <h2>Welcome back</h2><p>Use your invited email. We'll send a sign-in code.</p>
+      <form id="email-form"><label for="email">Email address</label><input id="email" type="email" autocomplete="email" required maxlength="254"><button>Send sign-in code</button></form>
+      <form id="code-form" hidden><label for="code">Code from your email</label><input id="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6,10}" required maxlength="10"><button>Sign in</button></form>
+    </section>
+    <section id="workspace" hidden>
+      <div class="workspace-heading"><h2>Your tournament albums</h2><button id="logout" class="secondary">Sign out</button></div>
+      <div class="album-toolbar"><label for="albums">Open an album</label><select id="albums"><option value="">New tournament</option></select><button id="new" class="secondary">+ New tournament</button></div>
+      <form id="editor" class="panel">
+        <div class="workspace-heading"><h2 id="editor-heading">New tournament</h2><span id="state" class="badge">Draft · only parents can see</span></div>
+        <fieldset id="fields">
+          <div class="form-grid"><div><label for="title">Tournament name</label><input id="title" required maxlength="160" placeholder="e.g. American Nationals"></div><div><label for="date">Date</label><input id="date" type="date" required></div><div><label for="location">Location</label><input id="location" required maxlength="200" placeholder="City or venue"></div><div><label for="result">Result</label><input id="result" required maxlength="300" placeholder="e.g. Gold · No-Gi"></div></div>
+          <label class="upload" for="photos"><strong>+ Add tournament photos</strong><span>Choose several from your phone or computer</span><span>JPEG, PNG or WebP · up to 20 photos, 20 MB each</span><input id="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
+          <p class="hint">The first photo is the album cover. Photos are resized for the web and location metadata is removed. For HEIC photos, export as JPEG first.</p>
+          <div id="photo-grid" class="photo-grid"></div>
+        </fieldset>
+        <div class="actions"><button id="save" type="submit">Save draft</button><button id="preview" type="button" class="secondary">Preview album</button><button id="publish" type="button">Publish to Blue's Journey</button><button id="unpublish" type="button" class="secondary" hidden>Return to draft</button></div>
+        <p id="publish-note" class="hint">Save and preview your album before publishing. Published photos are visible to everyone.</p>
+      </form>
+    </section>
+  </main>
+  <dialog id="preview-dialog" aria-labelledby="preview-heading"><button id="close-preview" class="secondary">Close preview ×</button><h2 id="preview-heading">Album preview</h2><p>This is how your album will appear in Blue's Journey.</p><div id="preview-card"></div></dialog>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
